@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * PopulateDatabase.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+	
+	<!-- Helper: Time format -->
+	<bean id="timeFormat" class="java.text.SimpleDateFormat">
+		<constructor-arg value="HH:mm" />
+	</bean>
+	
+	<!-- Helper: Date format -->
+	<bean id="dateFormat" class="java.text.SimpleDateFormat">
+		<constructor-arg value="dd/MM/yyyy" />
+	</bean>
+	
+	<!-- Helper: DateTime format -->
+	<bean id="dateTimeFormat" class="java.text.SimpleDateFormat">
+		<constructor-arg value="dd/MM/yyyy HH:mm" />
+	</bean>
+	
+	<!-- User accounts -->
+	
+	<bean id="rootUserAccount" class="security.UserAccount">
+		<property name="username" value="superadmin" />
+		<property name="password" value="17c4520f6cfd1ab53d8745e84681eb49" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="adminUserAccount" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Administrators -->
+	
+	<bean id="rootActor" class="domain.Administrator">
+		<property name="name" value="SuperAdmin" />
+		<property name="email" value="superadmin@acme.com" />
+		<property name="userAccount" ref="rootUserAccount" />
+	</bean>
+	
+	<!-- Configurations -->
+	
+	<bean id="webNameConfiguration" class="domain.Configuration" name="webName">
+		<property name="name" value="webName" />
+		<property name="value" value="DP Basic Project" />
+		<property name="type" value="String" />
+		<property name="validations">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="companyNameConfiguration" class="domain.Configuration" name="companyName">
+		<property name="name" value="companyName" />
+		<property name="value" value="DP Basic Project" />
+		<property name="type" value="String" />
+		<property name="validations">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="companyAddressConfiguration" class="domain.Configuration" name="companyAddresse">
+		<property name="name" value="companyAddress" />
+		<property name="value" value="DP Basic Project" />
+		<property name="type" value="String" />
+		<property name="validations">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="vatNumberConfiguration" class="domain.Configuration" name="vatNumber">
+		<property name="name" value="vatNumber" />
+		<property name="value" value="DP Basic Project" />
+		<property name="type" value="String" />
+		<property name="validations">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="infoEmailConfiguration" class="domain.Configuration" name="infoEmail">
+		<property name="name" value="infoEmail" />
+		<property name="value" value="info@acme.com" />
+		<property name="type" value="String" />
+		<property name="validations">
+			<list>
+				<value>email</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="termsEmailConfiguration" class="domain.Configuration" name="termsEmail">
+		<property name="name" value="termsEmail" />
+		<property name="value" value="notice@acme.com" />
+		<property name="type" value="String" />
+		<property name="validations">
+			<list>
+				<value>email</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="privacyEmailConfiguration" class="domain.Configuration" name="privacyEmail">
+		<property name="name" value="privacyEmail" />
+		<property name="value" value="privacy@acme.com" />
+		<property name="type" value="String" />
+		<property name="validations">
+			<list>
+				<value>email</value>
+			</list>
+		</property>
+	</bean>
+		
+	
+	<!--
+	<bean id="Configuration" class="domain.Configuration">
+		<property name="name" value="" />
+		<property name="value" value="" />
+		<property name="type" value="" />
+		<property name="validations" value="" />
+	</bean>
+	-->
+	
+	<!-- Other domain beans come here -->	
+	
+</beans>

@@ -1,0 +1,28 @@
+package converters;
+
+import javax.transaction.Transactional;
+
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+
+import domain.xxxxx;
+
+@Component
+@Transactional
+public class xxxxxToStringConverter implements Converter<xxxxx, String> {
+
+	@Override
+	public String convert(final xxxxx yyyyy) {
+
+		String result;
+		
+		if (yyyyy == null) {
+			result = null;
+		} else {
+			result = String.valueOf(yyyyy.getId());
+		}
+		
+		return result;
+	}
+
+}

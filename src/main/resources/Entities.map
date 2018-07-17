@@ -1,0 +1,12 @@
+#./src/main/resources/Entities.map
+#Tue Jul 17 12:04:01 CEST 2018
+privacyEmailConfiguration=20
+webNameConfiguration=14
+adminUserAccount=12
+rootActor=13
+termsEmailConfiguration=19
+companyAddressConfiguration=16
+companyNameConfiguration=15
+vatNumberConfiguration=17
+rootUserAccount=11
+infoEmailConfiguration=18
